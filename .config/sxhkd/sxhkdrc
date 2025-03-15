@@ -1,0 +1,29 @@
+alt + r
+	dmenu_run
+
+alt + g
+	$HOME/cfg/go.sh
+
+alt + Return
+	st
+
+alt + comma
+	$HOME/cfg/volume.sh -
+
+alt + period
+	$HOME/cfg/volume.sh +
+
+alt + bracketleft
+	$HOME/cfg/br.sh -
+
+alt + bracketright
+	$HOME/cfg/br.sh +
+
+alt + Shift_R
+	$HOME/cfg/lang-switch.sh
+
+ctrl + BackSpace
+	slock
+
+alt + p
+	import png:- | xclip -selection clipboard -t image/png

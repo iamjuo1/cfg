@@ -1,0 +1,58 @@
+set index_format  = "%4C %Z %{%b %d} %-20.20L %s %g"
+set send_charset  = utf-8
+set header_cache  = /tmp
+set use_threads   = reverse
+set sort          = last-date
+set markers       = false
+set sleep_time    = 0
+set status_on_top = true
+set fast_reply
+set include
+
+# Bindings
+bind index        D delete-message
+bind index        U undelete-message
+bind index        a noop
+bind index        d display-message
+bind index        S sync-mailbox
+bind index,attach g first-entry
+bind index,attach G last-entry
+bind index,attach s next-entry
+bind index,attach w previous-entry
+bind pager,attach a exit
+bind pager        s next-line
+bind pager        w previous-line
+bind pager        g top
+bind pager        G bottom
+bind pager        d view-attachments
+bind attach       d view-mailcap
+bind attach       S save-entry
+bind index,pager  p sidebar-prev
+bind index,pager  n sidebar-next
+bind index,pager  o sidebar-open
+bind index,pager  . sidebar-toggle-visible
+bind index        / vfolder-from-query
+
+# Mailcap
+set mailcap_path = ~/.config/mutt/mailcap
+alternative_order text/plain text/html
+auto_view text/markdown
+auto_view text/html
+auto_view application/json
+auto_view application/pgp-signature
+auto_view multipart/signed
+
+# Sidebar
+set mail_check_stats = true
+set sidebar_width    = 20
+set sidebar_format   = '%B %* %N/%S'
+
+# Colors
+color error      brightred     default
+color index      brightgreen   default
+color index_tags brightred     default
+color indicator  brightblue    default
+color status     brightwhite   default
+color attachment brightmagenta default
+color header     brightblue    default
+color quoted     green         default

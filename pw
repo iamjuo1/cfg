@@ -1,0 +1,63 @@
+#!/bin/sh
+
+umask u=rw,go=
+
+die() {
+	echo "$1" 1>&2
+	exit 1
+}
+
+add() {
+	[ -e "$PASS_DIR/$1.age" ] && die 'Entry already exists'
+
+	stty -echo
+	echo "Enter password for $1: "
+	read -r PASS
+	echo "Repeat password for $1: "
+	read -r PASS_CONFIRM
+	stty echo
+
+	[ "$PASS" = "$PASS_CONFIRM" ] || die 'Passwords do not match'
+
+	echo "$PASS" | age -R "$AGE_KEY.pub" -o "$PASS_DIR/$1.age"
+}
+
+edit() {
+
+	[ -f "$PASS_DIR/$1.age" ] || die "'$1' is not in password store"
+
+	[ -d /dev/shm ] || die 'Failed to access /dev/shm'
+
+	TMP_FILE=/dev/shm/"$1"
+
+	age -d -i "$AGE_KEY" "$PASS_DIR/$1.age" > "$TMP_FILE"
+
+	"$EDITOR" "$TMP_FILE"
+
+	[ -f "$TMP_FILE" ] || die 'New password not saved'
+
+	age -R "$AGE_KEY.pub" -o "$PASS_DIR/$1.age" "$TMP_FILE"
+	rm "$TMP_FILE"
+}
+
+[ -r "$AGE_KEY" ]  || die 'Age key does not exist'
+[ -n "$PASS_DIR" ] || die 'Password directory is not defined'
+
+case $1 in
+
+	add)
+		[ -z "$2" ] && die 'Empty name'
+		"$1" "$2" ;;
+
+	edit)
+		[ -z "$2" ] && die 'Empty name'
+		"$1" "$2" ;;
+
+	'')
+		tree "$PASS_DIR" | sed 's/\.age//' ;;
+
+	*)
+		[ -s "$PASS_DIR/$1.age" ] || die "'$1' is not in password store"
+		age -d -i "$AGE_KEY" "$PASS_DIR/$1.age" ;;
+
+esac

@@ -1,0 +1,22 @@
+# Set default values for all following accounts.
+defaults
+port           465
+auth           on
+tls            on
+tls_starttls   off
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        /tmp/msmtp.log
+
+# IAMJUO.COM
+account      iamjuo
+from         juozas@iamjuo.com
+host         mail.smtp2go.com
+user         juozaskietas
+passwordeval age -d -i ~/top-secret/age-key.txt ~/top-secret/pass/email-smtp2go.age
+
+# host         mail.iamjuo.com
+# user         juozas
+# passwordeval pw email-iamjuo
+
+# Set a default account
+account default: iamjuo
