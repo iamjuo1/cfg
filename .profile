@@ -12,12 +12,7 @@ export NOTMUCH_CONFIG="$HOME"/.config/notmuch/cfg.ini
 export PAGER=less
 export PASS_DIR="$HOME"/top-secret/pass
 export PATH="$HOME"/cfg:"$PATH"
-export STAGIT="$HOME"/tmp/stagit
 export TERMINAL=st
-export PUB_GIT="
-$HOME/cfg
-$HOME/src/sfm
-$HOME/src/patches
-$HOME/src/man
-$HOME/src/automail
-"
+
+doas chown "$USER" /sys/class/backlight/*/brightness
+redshift -m drm:card=1 -O 2000

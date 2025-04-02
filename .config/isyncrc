@@ -1,9 +1,8 @@
-# IAMJUO.COM
 IMAPStore       iamjuo
 Host            mail.iamjuo.com
 Port            993
 User            juozas
-PassCmd         "pw email-iamjuo"
+PassCmd         "pw mail-iamjuo"
 TLSType         IMAPS
 TLSVersions     +1.3 -1.2 -1.1 -1.0
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -16,29 +15,6 @@ Subfolders   Verbatim
 Channel   iamjuo
 Far       :iamjuo:
 Near      :local:
-Create    Both
-Expunge   Both
-Patterns  *
-SyncState *
-
-# GMX
-IMAPStore       gmx
-Host            imap.gmx.com
-Port            993
-UserCmd         "pw gmx-user"
-PassCmd         "pw gmx-pass"
-TLSType         IMAPS
-TLSVersions     +1.3 -1.2 -1.1 -1.0
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-MaildirStore local-gmx
-Path         ~/mail/gmx/
-Inbox        ~/mail/gmx/INBOX
-Subfolders   Verbatim
-
-Channel   gmx
-Far       :gmx:
-Near      :local-gmx:
 Create    Both
 Expunge   Both
 Patterns  *
