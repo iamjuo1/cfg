@@ -14,5 +14,6 @@ export PASS_DIR="$HOME"/top-secret/pass
 export PATH="$HOME"/cfg:"$PATH"
 export TERMINAL=st
 
+ntpd -dd -q -p pool.ntp.org
 doas chown "$USER" /sys/class/backlight/*/brightness
 redshift -m drm:card=1 -O 2000
