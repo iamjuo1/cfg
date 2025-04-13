@@ -24,6 +24,3 @@ alt + Shift_R
 
 ctrl + BackSpace
 	slock
-
-alt + p
-	import png:- | xclip -selection clipboard -t image/png

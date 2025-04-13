@@ -17,4 +17,5 @@ cp -ru ~/.ssh/config                   ~/cfg/.ssh
 cp -ru /boot/limine.conf               ~/cfg/boot/limine.conf
 
 doas cp -ru /etc/wpa_supplicant/wpa_supplicant.conf ~/cfg/etc
+doas cp -ru /etc/doas.conf                          ~/cfg/etc
 doas chown "$USER" ~/cfg/etc/*
