@@ -18,4 +18,6 @@ cp -ru /boot/limine.conf               ~/cfg/boot/limine.conf
 
 doas cp -ru /etc/wpa_supplicant/wpa_supplicant.conf ~/cfg/etc
 doas cp -ru /etc/doas.conf                          ~/cfg/etc
+doas cp -ru /etc/asound.conf                        ~/cfg/etc
+doas cp -ru /etc/inittab                            ~/cfg/etc
 doas chown "$USER" ~/cfg/etc/*

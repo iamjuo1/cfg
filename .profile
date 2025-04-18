@@ -14,6 +14,28 @@ export PASS_DIR="$HOME"/top-secret/pass
 export PATH="$HOME"/cfg:"$PATH"
 export TERMINAL=st
 
-ntpd -dd -q -p pool.ntp.org
-doas chown "$USER" /sys/class/backlight/*/brightness
-redshift -m drm:card=1 -O 2000
+alias ll='ls -hl'
+alias la='ls -hla'
+alias du='du -h'
+alias df='df -h'
+alias home='cd ~ && ls'
+alias bb='cd .. && ls'
+alias gg='git add . && git commit'
+alias gp='git push'
+alias zathura='zathura --mode fullscreen'
+alias src='doas nvim /etc/apk/repositories'
+
+alias add='doas apk add'
+alias del='doas apk del'
+
+alias suspend='echo mem | doas tee /sys/power/state'
+alias reboot='doas reboot'
+alias poweroff='doas poweroff'
+
+alias v=nvim
+
+alias ms='mbsync -a && notmuch new'
+alias mr='neomutt -F .config/mutt/iamjuo.com'
+alias gmx='mbsync -c ~/top-secret/isyncrc -a && neomutt -F .config/mutt/gmx.com'
+
+alias bt='transmission-daemon -p 1337'

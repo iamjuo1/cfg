@@ -1,0 +1,19 @@
+# /etc/inittab
+
+::sysinit:/sbin/openrc sysinit
+::sysinit:/sbin/openrc boot
+::wait:/sbin/openrc default
+
+# Set up a couple of getty's
+tty1::respawn:/bin/login
+
+# Stuff to do for the 3-finger salute
+::ctrlaltdel:/sbin/reboot
+
+# Stuff to do before rebooting
+::shutdown:/sbin/openrc shutdown
+
+::once:ntpd -dd -q -p pool.ntp.org
+::once:chown juo /sys/class/backlight/*/brightness
+::once:redshift -m drm:card=1 -O 2000
+
