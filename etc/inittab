@@ -15,5 +15,5 @@ tty1::respawn:/bin/login
 
 ::once:ntpd -dd -q -p pool.ntp.org
 ::once:chown juo /sys/class/backlight/*/brightness
-::once:redshift -m drm:card=1 -O 2000
+::once:redshift -m drm:card=1 -O 3000
 
