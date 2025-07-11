@@ -1,9 +1,9 @@
 defaults
-port           465
-auth           on
-tls            on
-tls_starttls   off
-logfile        /tmp/msmtp.log
+port         465
+auth         on
+tls          on
+tls_starttls off
+logfile      /tmp/msmtp.log
 
 account      iamjuo
 from         juozas@iamjuo.com

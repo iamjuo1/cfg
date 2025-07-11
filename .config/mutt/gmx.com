@@ -1,4 +1,3 @@
-set sendmail  = msmtp
 set folder    = ~/mail/gmx
 set spoolfile = +INBOX
 set record    = +Sent

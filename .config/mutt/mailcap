@@ -3,5 +3,4 @@ application/*;    nvim    %s
 image/*;          nsxiv   %s
 multipart/signed; nvim    %s
 text/html;        w3m -o display_link_number=1 -T text/html; copiousoutput
-text/markdown;    glow -p %s
 text/*;           nvim    %s

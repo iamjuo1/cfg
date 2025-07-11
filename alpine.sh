@@ -5,17 +5,15 @@ INSTALL=doas apk add
 
 $INSTALL curl make git gcc                     \
 rsync libarchive-tools mandoc ncurses          \
-neovim tmux htop shellcheck glow               \
+neovim tmux htop shellcheck                    \
 isync msmtp neomutt notmuch                    \
 alsa-utils ffmpeg mpv yt-dlp                   \
 transmission-daemon                            \
-graphicsmagick                                 \
 musl-dev libx11-dev libxft-dev libxinerama-dev \
 xrandr xclip xsct sxhkd slock setxkbmap        \
 ttf-dejavu                                     \
 firefox-esr                                    \
-zathura zathura-pdf-mupdf                      \
-deno
+zathura zathura-pdf-mupdf
 
 doas adduser "$USER" video
 doas adduser "$USER" audio
