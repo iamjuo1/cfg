@@ -31,4 +31,4 @@ alias gmx='mbsync -c ~/top-secret/isyncrc -a && neomutt -F .config/mutt/gmx.com'
 
 alias bt='transmission-daemon -p 1337'
 
-PS1=$(printf '\033[1m\033[91m$ \033[1m\033[92m$(git branch --show-current 2> /dev/null | sed "s/.*/& /")\033[0m')
+PS1=$(printf '\e[1m\e[91m$ \e[1m\e[92m$(git branch --show-current 2> /dev/null | sed "s/.*/& /")\e[0m\e[4 q')
