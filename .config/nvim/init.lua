@@ -1,9 +1,10 @@
 -- General
-vim.opt.number           = true          -- Show line numbers
-vim.opt.clipboard        = 'unnamedplus' -- Copy to system clipboard
-vim.opt.shiftwidth       = 4             -- Indentation
-vim.opt.tabstop          = 4             -- Indentation
-vim.opt.swapfile         = false         -- No swapfile
+vim.o.termguicolors      = false         -- Ruins colorscheme
+vim.o.number             = true          -- Show line numbers
+vim.o.clipboard          = 'unnamedplus' -- Copy to system clipboard
+vim.o.shiftwidth         = 4             -- Indentation
+vim.o.tabstop            = 4             -- Indentation
+vim.o.swapfile           = false         -- No swapfile
 vim.g.is_posix           = 1             -- Correct shell syntax highlight
 vim.g.loaded_netrw       = 1             -- Disable netrw
 vim.g.loaded_netrwPlugin = 1             -- Disable netrw
