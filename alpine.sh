@@ -3,16 +3,16 @@
 SRC=~/src
 INSTALL=doas apk add
 
-$INSTALL curl make git gcc                     \
-rsync libarchive-tools mandoc ncurses          \
-neovim tmux htop shellcheck                    \
-isync msmtp neomutt notmuch                    \
-alsa-utils ffmpeg mpv yt-dlp                   \
-transmission-daemon                            \
-musl-dev libx11-dev libxft-dev libxinerama-dev \
-xrandr xclip xsct sxhkd slock setxkbmap        \
-ttf-dejavu                                     \
-firefox-esr                                    \
+$INSTALL curl make git gcc musl-dev   \
+rsync libarchive-tools mandoc ncurses \
+neovim tmux htop shellcheck           \
+isync msmtp neomutt notmuch           \
+alsa-utils ffmpeg mpv yt-dlp          \
+transmission-daemon                   \
+libx11-dev libxft-dev libxinerama-dev \
+xrandr xclip xsct slock setxkbmap     \
+ttf-dejavu                            \
+firefox-esr                           \
 zathura zathura-pdf-mupdf
 
 doas adduser "$USER" video

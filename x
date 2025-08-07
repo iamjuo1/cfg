@@ -6,7 +6,9 @@ stty=$(stty -g)
 
 pid=$!
 
-trap 'DISPLAY=:0 $HOME/cfg/xinitrc' USR1
+trap 'DISPLAY=:0 dwm' USR1
 trap 'stty $stty; kill $pid' EXIT HUP INT QUIT TERM
+
+sleep 1 && DISPLAY=:0 xsct 4000 &
 
 wait $pid

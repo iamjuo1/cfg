@@ -3,7 +3,6 @@
 mkdir -p boot etc .ssh .config/transmission-daemon || true
 cp -ru ~/.profile                      ~/cfg
 cp -ru ~/.config/zathura               ~/cfg/.config
-cp -ru ~/.config/sxhkd                 ~/cfg/.config
 cp -ru ~/.config/nvim                  ~/cfg/.config
 cp -ru ~/.config/tmux                  ~/cfg/.config
 cp -ru ~/.config/git                   ~/cfg/.config
