@@ -1,6 +1,6 @@
 application/pdf;  zathura %s
 application/*;    nvim    %s
-image/*;          nsxiv   %s
+image/*;          mpv     %s
 multipart/signed; nvim    %s
 text/html;        w3m -o display_link_number=1 -T text/html; copiousoutput
 text/*;           nvim    %s
