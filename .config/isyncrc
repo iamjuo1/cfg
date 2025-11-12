@@ -1,10 +1,10 @@
-IMAPStore       iamjuo
-Host            mail.iamjuo.com
-Port            993
-User            juozas
-PassCmd         "pw mail-juozas"
-TLSType         IMAPS
-TLSVersions     +1.3 -1.2 -1.1 -1.0
+IMAPStore   iamjuo
+Host        mail.iamjuo.com
+Port        993
+User        juozas
+PassCmd     "pw mail-juozas"
+TLSType     IMAPS
+TLSVersions +1.3 -1.2 -1.1 -1.0
 
 MaildirStore local
 Path         ~/mail/iamjuo/

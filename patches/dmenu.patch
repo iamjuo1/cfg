@@ -1,0 +1,28 @@
+diff --git a/config.h b/config.h
+index 1edb647..8cab240 100644
+--- a/config.h
++++ b/config.h
+@@ -4,17 +4,17 @@
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++	"monospace:size=11"
+ };
+-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
++static const char *prompt = NULL;      /* -p  option; prompt to the left of input field */
+ static const char *colors[SchemeLast][2] = {
+ 	/*     fg         bg       */
+-	[SchemeNorm] = { "#bbbbbb", "#222222" },
+-	[SchemeSel] = { "#eeeeee", "#005577" },
+-	[SchemeOut] = { "#000000", "#00ffff" },
++	[SchemeNorm] = { "#111111", "pink" },
++	[SchemeSel]  = { "#111111", "red"  },
++	[SchemeOut]  = { "#111111", "red"  },
+ };
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+-static unsigned int lines      = 0;
++static unsigned int lines = 20;
+ 
+ /*
+  * Characters not considered part of a word while deleting words
