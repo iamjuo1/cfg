@@ -1,11 +1,11 @@
 #!/bin/sh
 
-BR=$(cat /sys/class/backlight/*/actual_brightness)
-MAX=$(cat /sys/class/backlight/*/max_brightness)
-STEP=$(( MAX/15 ))
+BR=$(cat   /sys/class/backlight/*/brightness)
 OUT=$(echo /sys/class/backlight/*/brightness)
+MAX=$(cat  /sys/class/backlight/*/max_brightness)
+STEP=$(( MAX/20 ))
 
-UP=$(( BR+STEP ))
+UP=$((   BR+STEP ))
 DOWN=$(( BR-STEP ))
 
 case $1 in
