@@ -1,19 +1,38 @@
 #!/bin/sh
 
-SRC=~/src
-INSTALL=doas apk add
+set -e
+# set -x
 
-$INSTALL curl make git gcc musl-dev   \
-rsync libarchive-tools mandoc ncurses \
-neovim tmux htop shellcheck           \
-isync msmtp neomutt notmuch           \
-alsa-utils ffmpeg mpv yt-dlp          \
-transmission-daemon                   \
-libx11-dev libxft-dev libxinerama-dev \
-xrandr xclip xsct slock setxkbmap     \
-ttf-dejavu                            \
-firefox-esr                           \
+ADD='doas apk add'
+DEL='doas apk del'
+
+BUILD_DIR=/tmp/src
+BUILD_DEPS='
+gcc musl-dev ncurses
+libx11-dev libxft-dev libxinerama-dev
+'
+BUILD_SOURCES='
+https://git.suckless.org/dmenu
+https://git.suckless.org/dwm
+https://git.suckless.org/st
+https://github.com/dudik/herbe
+https://github.com/iamjuo1/sfm
+'
+
+PKGS='
+curl make git
+rsync mandoc
+neovim tmux htop shellcheck
+isync msmtp neomutt notmuch
+alsa-utils ffmpeg mpv yt-dlp
+transmission-daemon
+xclip xsct slock setxkbmap
+ttf-dejavu
+firefox-esr
 zathura zathura-pdf-mupdf
+'
+
+$ADD $PKGS
 
 doas adduser "$USER" video
 doas adduser "$USER" audio
@@ -21,44 +40,29 @@ doas adduser "$USER" input
 
 cd ~ || exit
 
-mkdir $SRC
-mkdir ~/mail
-mkdir ~/video
-mkdir ~/audio
-mkdir ~/bt
-mkdir ~/down
-
-{
-echo "permit persist $USER as root"
-echo "permit nopass  $USER cmd chown"
-} | doas tee /etc/doas.conf
-
-{
-echo 'defaults.pcm.card 1'
-echo 'defaults.ctl.card 1'
-} | doas tee /etc/asound.conf
-
-git clone git@gitlab.com:iamjuo/top-secret.git
-git clone git@gitlab.com:iamjuo/scripts.git
-git clone git@gitlab.com:iamjuo/man.git
-
-cp ~/scripts/.xinitrc  ~/.xinitrc
-cp ~/scripts/.profile  ~/.profile
-cp ~/scripts/.mbsyncrc ~/.mbsyncrc
-
-# NeoVim plugin manager
-git clone --depth=1 https://github.com/savq/paq-nvim.git \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+mkdir -p $BUILD_DIR mail video audio mnt down
 
 # Make from source
-cd $SRC || exit
-git clone git@gitlab.com:iamjuo/sfm.git
-git clone git@gitlab.com:iamjuo/st.git
-git clone git@gitlab.com:iamjuo/dmenu.git
-git clone git@gitlab.com:iamjuo/dwm.git
-git clone git@gitlab.com:iamjuo/herbe.git
+
+$ADD $BUILD_DEPS
+
+cd $BUILD_DIR || exit
+
+for SRC in $BUILD_SOURCES
+do
+	git clone "$SRC" || true
+done
 
 for DIR in *
 do
-	cd "$DIR" && make && doas make install clean && cd ..
+	cd "$DIR"
+	git restore . && git clean -fdx && git pull
+	make
+	ls ~/cfg/patches/"$DIR"* && git apply ~/cfg/patches/"$DIR"*
+	make && doas make install clean
+	cd ..
 done
+
+doas chown -R "$USER":"$USER" /usr/local/bin
+
+$DEL $BUILD_DEPS
