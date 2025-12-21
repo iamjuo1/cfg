@@ -1,8 +1,9 @@
-set index_format  = "%4C %Z %{%b %d} %-20.20L %s %g"
+set index_format  = " %{%b %d} [%e/%E] %-16.16L %s # %g"
 set send_charset  = utf-8
 set header_cache  = /tmp
-set use_threads   = reverse
-set sort          = last-date
+set sort          = reverse-last-date
+set use_threads   = threads
+set collapse_all  = yes
 set markers       = false
 set sleep_time    = 0
 set status_on_top = true
@@ -10,8 +11,11 @@ set fast_reply
 set include
 
 # Bindings
-bind index        D delete-message
-bind index        U undelete-message
+macro index D "<modify-tags> +delete  -inbox -archive <enter>" "Delete"
+macro index U "<modify-tags> -delete  +inbox          <enter>" "Undelete"
+macro index A "<modify-tags> +archive -inbox -delete  <enter>" "Archive"
+
+bind index        X delete-message
 bind index        a noop
 bind index        d display-message
 bind index        S sync-mailbox
@@ -32,6 +36,7 @@ bind index,pager  n sidebar-next
 bind index,pager  o sidebar-open
 bind index,pager  . sidebar-toggle-visible
 bind index        / vfolder-from-query
+bind index  <space> collapse-thread
 
 # Mailcap
 set mailcap_path = ~/.config/mutt/mailcap
@@ -44,15 +49,18 @@ auto_view multipart/signed
 
 # Sidebar
 set mail_check_stats = true
-set sidebar_width    = 20
-set sidebar_format   = '%B %* %N/%S'
+set sidebar_width    = 18
+set sidebar_format   = ' %N/%S %* %D '
 
 # Colors
-color error      brightred     default
-color index      brightgreen   default
-color index_tags brightred     default
-color indicator  brightblue    default
-color status     brightwhite   default
-color attachment brightmagenta default
-color header     brightblue    default
-color quoted     green         default
+color error         brightred     default
+color index         magenta       default
+color index_date    magenta       default
+color index_author  yellow        default
+color index_subject blue          default
+color index_tags    default       default
+color indicator     underline     default default
+color status        brightwhite   default
+color attachment    brightmagenta default
+color header        brightblue    default
+color quoted        green         default

@@ -11,8 +11,8 @@ vim.g.loaded_netrwPlugin = 1             -- Disable netrw
 vim.cmd 'colorscheme vim'                -- Set colorscheme
 
 -- Show invisible chars
-vim.opt.list       = true
-vim.opt.listchars  = { trail = '·', tab = '+ ' }
+vim.opt.list      = true
+vim.opt.listchars = { trail = '·', tab = '+ ' }
 
 -- Packages
 require 'paq' {
