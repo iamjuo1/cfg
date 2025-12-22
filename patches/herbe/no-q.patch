@@ -1,17 +1,13 @@
-diff --git a/Makefile b/Makefile
-index 3225e36..1d37622 100644
---- a/Makefile
-+++ b/Makefile
+--- Makefile
++++ Makefile
 @@ -1,4 +1,4 @@
 -CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -I/usr/include/freetype2 -pthread
 +CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -I/usr/include/freetype2
  
  PREFIX ?= /usr/local
  CC ?= cc
-diff --git a/herbe.c b/herbe.c
-index 51d3990..dd105a2 100644
---- a/herbe.c
-+++ b/herbe.c
+--- herbe.c
++++ herbe.c
 @@ -7,7 +7,6 @@
  #include <string.h>
  #include <stdarg.h>

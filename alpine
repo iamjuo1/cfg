@@ -58,11 +58,11 @@ do
 	cd "$DIR"
 	git restore . && git clean -fdx && git pull
 	make
-	ls ~/cfg/patches/"$DIR"* && git apply ~/cfg/patches/"$DIR"*
+	ls ~/cfg/patches/"$DIR"/* && git apply ~/cfg/patches/"$DIR"/*
 	make && doas make install clean
 	cd ..
 done
 
 doas chown -R "$USER":"$USER" /usr/local/bin
 
-$DEL $BUILD_DEPS
+# $DEL $BUILD_DEPS

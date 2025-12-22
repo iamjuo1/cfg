@@ -1,7 +1,5 @@
-diff --git a/config.h b/config.h
-index 86b7e76..6057ebe 100644
---- a/config.h
-+++ b/config.h
+--- config.h
++++ config.h
 @@ -1,19 +1,19 @@
 -static const char *background_color = "#3e3e3e";
 -static const char *border_color = "#ececec";

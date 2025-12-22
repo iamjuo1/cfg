@@ -2,16 +2,21 @@
 
 ::sysinit:/sbin/openrc sysinit
 ::sysinit:/sbin/openrc boot
-::wait:/sbin/openrc default
+::sysinit:swapon -a
 
-tty1::respawn:/bin/su - juo
+tty1::respawn:su - juo
 
-# Stuff to do for the 3-finger salute
-::ctrlaltdel:/sbin/reboot
+::ctrlaltdel:reboot
 
-# Stuff to do before rebooting
-::shutdown:/sbin/openrc shutdown
+::shutdown:kill -15 -1
+::shutdown:echo '*** SHUTING DOWN ***'
+::shutdown:sleep 10
+::shutdown:kill -9  -1
+::shutdown:swapoff -a
+::shutdown:umount -a -r
 
 ::once:ntpd -dd -q -p pool.ntp.org
 ::once:chown juo /sys/class/backlight/*/brightness
 ::once:chown juo /dev/tty1
+
+::respawn:wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
