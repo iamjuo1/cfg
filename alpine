@@ -65,4 +65,4 @@ done
 
 doas chown -R "$USER":"$USER" /usr/local/bin
 
-# $DEL $BUILD_DEPS
+$DEL $BUILD_DEPS

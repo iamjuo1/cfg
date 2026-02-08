@@ -8,6 +8,7 @@ vim.o.swapfile           = false         -- No swapfile
 vim.g.is_posix           = 1             -- Correct shell syntax highlight
 vim.g.loaded_netrw       = 1             -- Disable netrw
 vim.g.loaded_netrwPlugin = 1             -- Disable netrw
+vim.g.editorconfig       = false         -- Disaster
 vim.cmd 'colorscheme vim'                -- Set colorscheme
 
 -- Show invisible chars
@@ -18,7 +19,6 @@ vim.opt.listchars = { trail = '·', tab = '+ ' }
 require 'paq' {
 	'https://github.com/savq/paq-nvim'           ,
 	'https://github.com/numToStr/Comment.nvim'   ,
-	'https://github.com/ap/vim-css-color'        ,
 	'https://github.com/nvim-tree/nvim-tree.lua' ,
 }
 require 'Comment'.setup {}

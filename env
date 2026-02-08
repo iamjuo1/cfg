@@ -6,12 +6,7 @@ alias ll='ls -hl'
 alias la='ls -hla'
 alias du='du -h'
 alias df='df -h'
-alias home='cd ~ && ls'
 alias bb='cd .. && ls'
-alias gg='git add . && git commit'
-alias gp='git push'
-alias gc='git checkout'
-alias gb='git branch'
 alias zathura='zathura --mode fullscreen'
 alias src='doas nvim /etc/apk/repositories'
 
@@ -22,12 +17,19 @@ alias suspend='echo mem | doas tee /sys/power/state'
 alias reboot='doas reboot'
 alias poweroff='doas poweroff'
 
+alias ga='git commit --amend'
+alias gb='git branch'
+alias gc='git checkout'
+alias gd='git diff'
+alias gg='git add . && git commit'
+alias gp='git push'
+
 alias v=nvim
 alias k=kubectl
 
 alias ms='mbsync -a && notmuch new'
-alias mr='neomutt -F .config/mutt/iamjuo.com'
-alias gmx='mbsync -c ~/top-secret/isyncrc -a && neomutt -F .config/mutt/gmx.com'
+alias mr='neomutt -F ~/.config/*/iamjuo.com'
+alias mr2='mkdir -p /tmp/mail && mbsync -c ~/*/isyncrc -a && neomutt -F ~/.config/*/tmp.com'
 
 alias bt='transmission-daemon -p 1337'
 
