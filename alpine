@@ -29,7 +29,6 @@ transmission-daemon
 xclip xsct slock setxkbmap
 ttf-dejavu
 firefox-esr
-zathura zathura-pdf-mupdf
 '
 
 $ADD $PKGS
