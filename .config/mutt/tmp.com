@@ -1,8 +1,8 @@
 set folder    = /tmp/mail
-set spoolfile = +INBOX
 set record    = +Sent
 set postponed = +Drafts
 set trash     = +Trash
+set spoolfile = +INBOX
 
 mailboxes +INBOX +Sent +Drafts +Spam +Trash
 

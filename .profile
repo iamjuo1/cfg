@@ -1,9 +1,9 @@
 #!/bin/sh
 
 export AGE_KEY="$HOME"/.ssh/id_ed25519
-export BOOKMARKS="$HOME"/top-secret/bookmarks
 export BROWSER=firefox
 export EDITOR=nvim
+export EMAIL=juozas@iamjuo.com
 export ENV="$HOME"/cfg/env
 export HISTFILE="$HOME"/cfg/.sh-history
 export MAILDIR="$HOME"/mail
