@@ -24,7 +24,7 @@ curl make git
 rsync mandoc
 neovim tmux htop shellcheck
 isync msmtp neomutt notmuch
-alsa-utils ffmpeg mpv yt-dlp
+alsa-utils ffmpeg mpv yt-dlp mesa-vulkan-ati
 transmission-daemon
 xclip xsct slock setxkbmap
 ttf-dejavu
