@@ -20,9 +20,9 @@ https://github.com/iamjuo1/sfm
 '
 
 PKGS='
-curl make git
-rsync mandoc
-neovim tmux htop shellcheck
+curl make openssh-client git rsync
+mandoc htop shellcheck astyle
+neovim tmux
 isync msmtp neomutt notmuch
 alsa-utils ffmpeg mpv yt-dlp mesa-vulkan-ati
 transmission-daemon
