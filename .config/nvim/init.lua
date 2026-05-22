@@ -16,19 +16,16 @@ vim.opt.list      = true
 vim.opt.listchars = { trail = '·', tab = '+ ' }
 
 -- Packages
-require 'paq' {
-	'https://github.com/savq/paq-nvim'           ,
-	'https://github.com/numToStr/Comment.nvim'   ,
+vim.pack.add
+{
+	'https://github.com/nvim-mini/mini.comment'  ,
 	'https://github.com/nvim-tree/nvim-tree.lua' ,
 }
-require 'Comment'.setup {}
-require 'nvim-tree'.setup {
-	view = {
-		width = 25,
-	},
-	git = {
-		enable = false,
-	},
+require 'mini.comment'.setup {}
+require 'nvim-tree'.setup
+{
+	view = { width = 25 },
+	git  = { enable = false },
 	renderer = {
 		icons = {
 			show = {
@@ -36,9 +33,7 @@ require 'nvim-tree'.setup {
 				folder       = false,
 				folder_arrow = false,
 			},
-			glyphs = {
-				symlink = '',
-			},
+			glyphs = { symlink = '' },
 		},
 	},
 }
@@ -83,7 +78,7 @@ vim.keymap.set('v', '<A-v>', '"yP')
 vim.keymap.set('n', 'd', '"_d')
 vim.keymap.set('n', 'x', '"_x')
 
--- Comment / uncomment, requires plugin - Comment
+-- Comment / uncomment, requires plugin
 vim.keymap.set('n', '<A-e>', '<Esc>gcc', { remap = true })
 vim.keymap.set('i', '<A-e>', '<Esc>gcc', { remap = true })
 vim.keymap.set('v', '<A-e>', 'gc',       { remap = true })
