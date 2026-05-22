@@ -1,63 +1,66 @@
 #!/bin/sh
 
+set -e
 umask u=rw,go=
 
-die() {
-	echo "$1" 1>&2
+end()
+{
+	printf '%s\n' "$1" 1>&2
 	exit 1
 }
 
-add() {
-	[ -e "$PASS_DIR/$1.age" ] && die 'Entry already exists'
+add()
+{
+	[ -e "$PASS_DIR/$1.age" ] && end 'Entry already exists'
 
 	stty -echo
-	echo "Enter password for $1: "
+	printf 'Enter password for %s:  \n' "$1"
 	read -r PASS
-	echo "Repeat password for $1: "
+	printf 'Repeat password for %s: \n' "$1"
 	read -r PASS_CONFIRM
 	stty echo
 
-	[ "$PASS" = "$PASS_CONFIRM" ] || die 'Passwords do not match'
+	[ "$PASS" = "$PASS_CONFIRM" ] || end 'Passwords do not match'
 
-	echo "$PASS" | age -R "$AGE_KEY.pub" -o "$PASS_DIR/$1.age"
+	printf '%s' "$PASS" | age -R "$AGE_KEY.pub" -o "$PASS_DIR/$1.age"
+	unset PASS PASS_CONFIRM
 }
 
-edit() {
+edit()
+{
+	[ -f "$PASS_DIR/$1.age" ] || end "'$1' is not in password store"
+	[ -d /dev/shm           ] || end 'Failed to access /dev/shm'
 
-	[ -f "$PASS_DIR/$1.age" ] || die "'$1' is not in password store"
-
-	[ -d /dev/shm ] || die 'Failed to access /dev/shm'
-
-	TMP_FILE=/dev/shm/"$1"
+	TMP_FILE=$(mktemp /dev/shm/pass.XXXXXX)
 
 	age -d -i "$AGE_KEY" "$PASS_DIR/$1.age" > "$TMP_FILE"
 
 	"$EDITOR" "$TMP_FILE"
 
-	[ -f "$TMP_FILE" ] || die 'New password not saved'
+	[ -f "$TMP_FILE" ] || end 'New password not saved'
 
 	age -R "$AGE_KEY.pub" -o "$PASS_DIR/$1.age" "$TMP_FILE"
 	rm "$TMP_FILE"
 }
 
-[ -r "$AGE_KEY" ]  || die 'Age key does not exist'
-[ -n "$PASS_DIR" ] || die 'Password directory is not defined'
+[ -r "$AGE_KEY"  ] || end 'Age key does not exist'
+[ -n "$PASS_DIR" ] || end 'Password directory is not defined'
 
 case $1 in
 
 	add)
-		[ -z "$2" ] && die 'Empty name'
+		[ -z "$2" ] && end 'No arg'
 		"$1" "$2" ;;
 
 	edit)
-		[ -z "$2" ] && die 'Empty name'
+		[ -z "$2" ] && end 'No arg'
 		"$1" "$2" ;;
 
 	'')
 		tree "$PASS_DIR" | sed 's/\.age//' ;;
 
 	*)
-		[ -s "$PASS_DIR/$1.age" ] || die "'$1' is not in password store"
+		[ -s "$PASS_DIR/$1.age" ] || end "'$1' is not in password store"
 		age -d -i "$AGE_KEY" "$PASS_DIR/$1.age" ;;
 
 esac

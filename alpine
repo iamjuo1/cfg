@@ -39,7 +39,7 @@ doas adduser "$USER" input
 
 cd ~ || exit
 
-mkdir -p $BUILD_DIR mail video audio mnt down
+mkdir -p $BUILD_DIR mail video audio mnt
 
 # Make from source
 
