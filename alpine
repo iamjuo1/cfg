@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -eu
 # set -x
 
 ADD='doas apk add'
@@ -8,7 +8,7 @@ DEL='doas apk del'
 
 BUILD_DIR=/tmp/src
 BUILD_DEPS='
-gcc musl-dev ncurses
+gcc musl-dev ncurses astyle
 libx11-dev libxft-dev libxinerama-dev
 '
 BUILD_SOURCES='
@@ -21,7 +21,7 @@ https://github.com/iamjuo1/sfm
 
 PKGS='
 curl make openssh-client git rsync
-mandoc htop shellcheck astyle
+mandoc htop shellcheck
 neovim tmux
 isync msmtp neomutt notmuch
 alsa-utils ffmpeg mpv yt-dlp mesa-vulkan-ati
@@ -37,7 +37,7 @@ doas adduser "$USER" video
 doas adduser "$USER" audio
 doas adduser "$USER" input
 
-cd ~ || exit
+cd || exit
 
 mkdir -p $BUILD_DIR mail video audio mnt
 

@@ -37,11 +37,7 @@ case $INPUT in
 	record-stop)
 		killall ffmpeg ;;
 
-	http*)
-		INPUT=$(echo "$INPUT" | awk '{print $1}')
-		echo "$INPUT" | xclip -selection clipboard ;;
-
-	file://*)
+	http*|file://*)
 		INPUT=$(echo "$INPUT" | awk '{print $1}')
 		echo "$INPUT" | xclip -selection clipboard ;;
 

@@ -27,8 +27,8 @@ alias v=nvim
 alias k=kubectl
 
 alias ms='mbsync -a && notmuch new'
-alias mr='neomutt -F ~/.config/*/iamjuo.com'
-alias mr2='mkdir -p /tmp/mail && mbsync -c ~/*/isyncrc -a && neomutt -F ~/.config/*/tmp.com'
+alias mail='neomutt -F ~/.config/*/iamjuo.com'
+alias tmpmail='mkdir -p /tmp/mail && mbsync -c ~/*/isyncrc -a && neomutt -F ~/.config/*/tmp.com'
 
 alias bt='transmission-daemon -p 1337'
 

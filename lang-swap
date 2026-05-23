@@ -2,5 +2,5 @@
 
 case $(setxkbmap -query | grep -o us) in
 	us) setxkbmap lt ;;
-	*) setxkbmap us  ;;
+	*)  setxkbmap us ;;
 esac

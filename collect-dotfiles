@@ -1,21 +1,22 @@
 #!/bin/sh
 
-mkdir -p boot etc .ssh .config/transmission-daemon || true
-cp -ru ~/.profile                      ~/cfg
-cp -ru ~/.config/nvim                  ~/cfg/.config
-cp -ru ~/.config/tmux                  ~/cfg/.config
-cp -ru ~/.config/git                   ~/cfg/.config
-cp -ru ~/.config/mutt                  ~/cfg/.config
-cp -ru ~/.config/msmtp                 ~/cfg/.config
-cp -ru ~/.config/notmuch               ~/cfg/.config
-cp -ru ~/.config/isyncrc               ~/cfg/.config
-cp -ru ~/.config/mpv                   ~/cfg/.config
-cp -ru ~/.config/transm*/settings.json ~/cfg/.config/transmission-daemon
-cp -ru ~/.ssh/config                   ~/cfg/.ssh
-cp -ru /boot/limine.conf               ~/cfg/boot/limine.conf
+mkdir -p boot etc .ssh .config/transmission-daemon
 
-doas cp -ru /etc/wpa_supplicant/wpa_supplicant.conf ~/cfg/etc
-doas cp -ru /etc/doas.conf                          ~/cfg/etc
-doas cp -ru /etc/asound.conf                        ~/cfg/etc
-doas cp -ru /etc/inittab                            ~/cfg/etc
+rsync -au ~/.profile                      ~/cfg
+rsync -au ~/.config/nvim                  ~/cfg/.config
+rsync -au ~/.config/tmux                  ~/cfg/.config
+rsync -au ~/.config/git                   ~/cfg/.config
+rsync -au ~/.config/mutt                  ~/cfg/.config
+rsync -au ~/.config/msmtp                 ~/cfg/.config
+rsync -au ~/.config/notmuch               ~/cfg/.config
+rsync -au ~/.config/isyncrc               ~/cfg/.config
+rsync -au ~/.config/mpv                   ~/cfg/.config
+rsync -au ~/.config/transm*/settings.json ~/cfg/.config/transmission-daemon
+rsync -au ~/.ssh/config                   ~/cfg/.ssh
+rsync -au /boot/limine.conf               ~/cfg/boot/limine.conf
+
+doas rsync -au /etc/wpa_supplicant/wpa_supplicant.conf ~/cfg/etc
+doas rsync -au /etc/doas.conf                          ~/cfg/etc
+doas rsync -au /etc/asound.conf                        ~/cfg/etc
+doas rsync -au /etc/inittab                            ~/cfg/etc
 doas chown "$USER" ~/cfg/etc/*
