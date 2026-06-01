@@ -14,3 +14,4 @@ export PAGER=less
 export PASS_DIR="$HOME"/top-secret/pass
 export PATH="$HOME"/cfg:"$PATH"
 export TERMINAL=st
+export W3M_DIR="$HOME"/.config/w3m
