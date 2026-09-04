@@ -25,8 +25,9 @@ alias gp='git push'
 
 alias v=nvim
 alias k=kubectl
+alias s=smol
 
-alias ms='mbsync -a && notmuch new'
+alias ms='mbsync -a && notmuch new && notmuch-tag'
 alias mail='neomutt -F ~/.config/*/iamjuo.com'
 alias tmpmail='mkdir -p /tmp/mail && mbsync -c ~/*/isyncrc -a && neomutt -F ~/.config/*/tmp.com'
 

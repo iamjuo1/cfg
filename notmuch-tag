@@ -1,0 +1,12 @@
+#!/bin/sh
+
+notmuch tag +SENT   -- from:@iamjuo.com
+notmuch tag +FWD    -- 'tag:inbox AND (subject:FWD OR subject:FW)'
+notmuch tag +IBKR   -- tag:inbox AND from:@interactivebrokers.com
+notmuch tag +T212   -- tag:inbox AND from:@trading212.com
+notmuch tag +TASTY  -- tag:inbox AND from:@tastytrade.com
+notmuch tag +WISE   -- tag:inbox AND from:@wise.com
+notmuch tag +SUCKLS -- tag:inbox AND to:@suckless.org
+notmuch tag +ALPINE -- tag:inbox AND to:@alpinelinux.org
+notmuch tag +NTMUCH -- tag:inbox AND to:@notmuchmail.org
+notmuch tag +SMTPD  -- tag:inbox AND to:@opensmtpd.org

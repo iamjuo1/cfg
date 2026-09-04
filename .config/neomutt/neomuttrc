@@ -11,9 +11,12 @@ set fast_reply
 set include
 
 # Bindings
-macro index D "<modify-tags> +delete  -inbox -archive <enter>" Delete
-macro index U "<modify-tags> -delete  +inbox          <enter>" Undelete
-macro index A "<modify-tags> +archive -inbox -delete  <enter>" Archive
+macro index R "<modify-tags> -inbox -unread                <enter>" Read
+macro index D "<modify-tags> +TRASH -inbox                 <enter>" Trash
+macro index U "<modify-tags> -TRASH +inbox                 <enter>" Restore
+macro index T "<modify-tags> -TRASH -inbox -unread +TODO   <enter>" Todo
+macro index B "<modify-tags> -TRASH -inbox -unread +BILLS  <enter>" Bills
+macro index A "<modify-tags> -TRASH -inbox -unread +ARCHIV <enter>" Archive
 
 bind index        X delete-message
 bind index        a noop

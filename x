@@ -9,6 +9,6 @@ pid=$!
 trap 'DISPLAY=:0 dwm' USR1
 trap 'stty $stty; kill $pid' EXIT HUP INT QUIT TERM
 
-sleep 1 && DISPLAY=:0 xsct 4000 &
+sleep 1 && DISPLAY=:0 xsct 3500 &
 
 wait $pid

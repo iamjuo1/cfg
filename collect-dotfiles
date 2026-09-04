@@ -3,10 +3,10 @@
 mkdir -p boot etc .ssh .config/transmission-daemon
 
 rsync -au ~/.profile                      ~/cfg
-rsync -au ~/.config/nvim                  ~/cfg/.config
+rsync -au ~/.config/nvim/*.lua            ~/cfg/.config
 rsync -au ~/.config/tmux                  ~/cfg/.config
 rsync -au ~/.config/git                   ~/cfg/.config
-rsync -au ~/.config/mutt                  ~/cfg/.config
+rsync -au ~/.config/neomutt               ~/cfg/.config
 rsync -au ~/.config/msmtp                 ~/cfg/.config
 rsync -au ~/.config/notmuch               ~/cfg/.config
 rsync -au ~/.config/isyncrc               ~/cfg/.config
